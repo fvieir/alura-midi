@@ -1,5 +1,12 @@
 function tocar_som (instrumento) {
-  document.querySelector(instrumento).play()
+  const seletor = document.querySelector(instrumento)
+
+  if(seletor && seletor.localName === 'audio') {
+    seletor.play()
+  } else {
+    console.log('seletor não cadastrado')
+  }
+
 }
 
 function tecla_ativa (tecla)
@@ -26,15 +33,15 @@ for (let contador = 0; contador < listaTeclas.length; contador++) {
   }
   
   teclas.addEventListener('keydown', (event) => {
-    if (event.code === 'enter' || event.code === 'space') {
+    if (event.code === 'Enter' || event.code === 'Space') {
       tecla_ativa(teclas)
-      console.log(event)
     }
   })
 
   teclas.addEventListener('keyup', (event) => {
-    if (event.code === 'enter' || event.code === 'space') {
+    if (event.code === 'Enter' || event.code === 'Space') {
       remove_tecla_ativa(teclas)
     }
   })
 }
+
